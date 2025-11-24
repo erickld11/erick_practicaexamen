@@ -9,6 +9,17 @@
     <p>Bienvenido a mi web publicada desde GitHub Pages.</p>
     <footer>Este es el pie de página ~ Año 2005</footer>
     <style>
+   
+
+  <style>
+    #mascota {
+        position: absolute;
+        font-size: 48px;
+        transition: transform 0.1s linear;
+        pointer-events: none; /* No bloquea clics */
+    }
+</style>
+
     body {
         background-color: violet;
     }
@@ -16,6 +27,19 @@
    <p style="font-size: 64px;">
     Este es mi párrafo con tamaño ultragrande
 </p>
+  
+<div id="mascota">🤖</div>
+   
+  <script>
+    const mascota = document.getElementById("mascota");
+
+    document.addEventListener("mousemove", (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+
+        mascota.style.transform = `translate(${x}px, ${y}px)`;
+    });
+</script>
 
 </body>
 </html>
