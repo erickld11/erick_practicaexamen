@@ -1,21 +1,75 @@
-astY = event.clientY + 20;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi página interactiva</title>
+    <style>
+        /* Fondo violeta */
+        body {
+            background-color: violet;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
 
-            dragon.style.transform = `translate(${lastX}px, ${lastY}px)`;
+        /* Párrafo tamaño ultragrande */
+        p {
+            font-size: 64px;
+            text-align: center;
+            margin-top: 50px;
+        }
 
-            // Fuego
-            fuego.style.opacity = 1;
-            fuego.style.transform = `translate(${event.clientX - 10}px, ${event.clientY - 10}px)`;
+        /* Estilo para la mascota */
+        #mascota {
+            position: absolute;
+            font-size: 48px;
+            cursor: pointer;
+            user-select: none;
+            transition: transform 0.1s ease; /* Movimiento suave */
+        }
 
-            // Cambia color del dragón
-            dragon.style.color = `hsl(${Math.random() * 360}, 80%, 60%)`;
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #222;
+            color: #fff;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
 
-            // Fuego desaparece
-            clearTimeout(window.fireTimeout);
-            window.fireTimeout = setTimeout(() => {
-                fuego.style.opacity = 0;
-            }, 120);
+    <p>Este es mi párrafo con tamaño ultragrande</p>
+  
+    <!-- Mascota interactiva (Dragón) -->
+    <div id="mascota">🐉</div>
+   
+    <script>
+        const mascota = document.getElementById("mascota");
+
+        document.addEventListener("mousemove", (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+
+            // La mascota sigue al ratón pero con un pequeño offset para no taparlo
+            mascota.style.transform = `translate(${x + 10}px, ${y + 10}px)`;
+        });
+
+        // Hacer que la mascota cambie de color al hacer click
+        mascota.addEventListener("click", () => {
+            const colores = ["red", "orange", "yellow", "green", "blue", "purple"];
+            const colorRandom = colores[Math.floor(Math.random() * colores.length)];
+            mascota.style.color = colorRandom;
         });
     </script>
+
+    <footer>
+        Este es el pie de página ~ Año 2005
+    </footer>
 
 </body>
 </html>
